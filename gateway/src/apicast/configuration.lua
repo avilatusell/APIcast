@@ -97,7 +97,7 @@ function _M.parse_service(service)
       policy_chain = build_policy_chain(proxy.policy_chain),
       error_auth_failed = proxy.error_auth_failed or 'Authentication failed',
       error_limits_exceeded = proxy.error_limits_exceeded or 'Limits exceeded',
-      error_method_disabled = 'Method disabled',
+      error_method_disabled = 'Method disabled on the subscribed plan',
       error_auth_missing = proxy.error_auth_missing or 'Authentication parameters missing',
       auth_failed_headers = proxy.error_headers_auth_failed or 'text/plain; charset=utf-8',
       limits_exceeded_headers = proxy.error_headers_limits_exceeded or 'text/plain; charset=utf-8',

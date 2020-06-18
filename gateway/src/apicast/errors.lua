@@ -37,7 +37,7 @@ function _M.limits_exceeded(service, retry_after)
 end
 
 function _M.method_disabled(service)
-  ngx.log(ngx.INFO, 'method disabled for service ', service.id)
+  ngx.log(ngx.INFO, 'method disabled for subscribed plan on service ', service.id)
   ngx.var.cached_key = nil
   ngx.status = service.method_disabled_status
   ngx.header.content_type = service.method_disabled_headers
