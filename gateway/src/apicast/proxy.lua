@@ -163,6 +163,8 @@ function _M:authorize(service, usage, credentials, ttl)
     if not authorized then
       if rejection_reason == 'limits_exceeded' then
         return errors.limits_exceeded(service, retry_after)
+      elseif rejection_reason == nil then
+        return errors.method_disabled(service)
       else -- Generic error for now. Maybe return different ones in the future.
         return errors.authorization_failed(service)
       end

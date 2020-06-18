@@ -36,6 +36,15 @@ function _M.limits_exceeded(service, retry_after)
   return exit()
 end
 
+function _M.method_disabled(service)
+  ngx.log(ngx.INFO, 'method disabled for service ', service.id)
+  ngx.var.cached_key = nil
+  ngx.status = service.method_disabled_status
+  ngx.header.content_type = service.method_disabled_headers
+  ngx.print(service.error_method_disabled)
+  return exit()
+end
+
 function _M.no_match(service)
   ngx.header.x_3scale_matched_rules = ''
   ngx.log(ngx.INFO, 'no rules matched for service ', service.id)
